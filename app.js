@@ -168,7 +168,7 @@ function toggleDes(e){
 
 // delete item
 function deleteItem(e) {
-  const element = e.currentTarget.parentElement.parentElement;
+  const element = e.currentTarget.parentElement.parentElement.parentElement;
   const id = element.dataset.id;
 
   list.removeChild(element);
