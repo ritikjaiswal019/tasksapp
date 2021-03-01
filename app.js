@@ -57,8 +57,9 @@ function addItem(e) {
     let doc = document.createAttribute("data-doc");
     doc.value = date;
     let moc = document.createAttribute("data-moc");
-    moc.value = month
-    element.setAttributeNode(attr);
+    moc.value = month;
+    parentOfElement.setAttributeNode(attr);
+    // element.setAttributeNode(attr);
     element.setAttributeNode(doc);
     element.setAttributeNode(moc);
     element.classList.add("grocery-item");
@@ -296,7 +297,8 @@ function createListItem(id, value, date,month, description) {
   const element = document.createElement("article");
   let attr = document.createAttribute("data-id");
   attr.value = id;
-  element.setAttributeNode(attr);
+  // element.setAttributeNode(attr);
+  parentOfElement.setAttributeNode(attr);
   element.classList.add("grocery-item");
   element.innerHTML = `<p class="title">${value}</p>
             <div class="btn-container">
