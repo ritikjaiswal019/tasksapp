@@ -8,6 +8,8 @@ const grocery = document.getElementById("grocery");
 const submitBtn = document.querySelector(".submit-btn");
 const container = document.querySelector(".grocery-container");
 const list = document.querySelector(".grocery-list");
+const listTasks = document.querySelectorAll(".listTask");
+// const listDescr = document.querySelectorAll(".listDescription");
 const clearBtn = document.querySelector(".clear-btn");
 const addDescBtn =document.querySelector(".add-des-btn");
 const descCont = document.querySelector(".description-container");
@@ -42,6 +44,7 @@ function addItem(e) {
 
   if (value !== "" && !editFlag) {
     const parentOfElement = document.createElement("div");
+    parentOfElement.classList.add("listTask");
     const element2 = document.createElement("article");
     element2.classList.add("grocery-item");
     element2.classList.add("hide");
@@ -134,7 +137,7 @@ function displayAlert(text, action) {
 
 // clear items
 function clearItems() {
-  const items = document.querySelectorAll(".grocery-item");
+  const items = document.querySelectorAll(".listTasks");
   if (items.length > 0) {
     items.forEach(function (item) {
       list.removeChild(item);
@@ -143,6 +146,7 @@ function clearItems() {
   container.classList.remove("show-container");
   displayAlert("empty list", "danger");
   setBackToDefault();
+  list.innerHTML = "";
   localStorage.removeItem("list");
 }
 
@@ -196,7 +200,12 @@ function setBackToDefault() {
   editFlag = false;
   editID = "";
   submitBtn.textContent = "submit";
-  toggleDescBox();
+  const geticon = addDescBtn.getElementsByTagName("i")[0];
+  
+  if(geticon.classList.contains("fa-times-circle")){
+    console.log("True");
+    toggleDescBox();
+  }
   console.log(descBox.value);
   descBox.value = "";
 }
@@ -278,6 +287,7 @@ function toggleDescBox(){
 
 function createListItem(id, value, date,month, description) {
   const parentOfElement = document.createElement("div");
+  parentOfElement.classList.add("listTask");
   const element2 = document.createElement("article");
   element2.classList.add("grocery-item");
   element2.classList.add("hide");
